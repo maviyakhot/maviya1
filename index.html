@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital Identity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Active class styling */
+        .active {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+    <header class="bg-indigo-500 dark:bg-indigo-700 text-white py-6 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl sm:text-3xl font-semibold">My Portfolio</h1>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-4">
+                    <li><a href="#home" class="hover:text-indigo-200 dark:hover:text-indigo-300 transition duration-300">Home</a></li>
+                    <li><a href="#about" class="hover:text-indigo-200 dark:hover:text-indigo-300 transition duration-300">About</a></li>
+                    <li><a href="#achievements" class="hover:text-indigo-200 dark:hover:text-indigo-300 transition duration-300">Achievements</a></li>
+                    <li><a href="#goals" class="hover:text-indigo-200 dark:hover:text-indigo-300 transition duration-300">Goals</a></li>
+                    <li><a href="#personal" class="hover:text-indigo-200 dark:hover:text-indigo-300 transition duration-300">Personal</a></li>
+                </ul>
+            </nav>
+            <button id="hamburger-btn" class="md:hidden text-white focus:outline-none" aria-label="Toggle Navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-50">
+        <div class="bg-gray-800 w-80 h-full absolute right-0 p-6">
+            <div class="flex justify-end mb-4">
+                <button id="close-menu-btn" class="text-white focus:outline-none" aria-label="Close Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="block">
+                <ul class="space-y-4">
+                    <li><a href="#home" class="block text-lg text-white hover:text-indigo-300 dark:hover:text-indigo-300 transition duration-300">Home</a></li>
+                    <li><a href="#about" class="block text-lg text-white hover:text-indigo-300 dark:hover:text-indigo-300 transition duration-300">About</a></li>
+                    <li><a href="#achievements" class="block text-lg text-white hover:text-indigo-300 dark:hover:text-indigo-300 transition duration-300">Achievements</a></li>
+                    <li><a href="#goals" class="block text-lg text-white hover:text-indigo-300 dark:hover:text-indigo-300 transition duration-300">Goals</a></li>
+                    <li><a href="#personal" class="block text-lg text-white hover:text-indigo-300 dark:hover:text-indigo-300 transition duration-300">Personal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main class="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
+        <section id="home" role="region" aria-labelledby="home-heading" class="text-center mb-16">
+            <h2 id="home-heading" class="text-4xl sm:text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-4">Welcome!</h2>
+            <img src="images/m.jpg" alt="Photo of Maviya Khot" class="rounded-full mx-auto mb-6 w-48 h-48 sm:w-64 sm:h-64 border-4 border-indigo-300 dark:border-indigo-700">
+            <p class="text-gray-700 dark:text-gray-300 text-lg sm:text-xl mb-8">
+                I'm Maviya Khot, and I'm excited to share my journey with you.
+            </p>
+            <div class="flex justify-center">
+                <a href="#about" class="bg-indigo-500 dark:bg-indigo-600 text-white py-3 px-6 rounded-full hover:bg-indigo-600 dark:hover:bg-indigo-700 transition duration-300 text-lg sm:text-xl">Learn More</a>
+            </div>
+        </section>
+
+        <section id="about" role="region" aria-labelledby="about-heading" class="mb-16">
+            <h2 id="about-heading" class="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-white mb-6 text-center">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <p class="text-gray-700 dark:text-gray-300 text-lg sm:text-xl">
+                        Hello! I'm Maviya Khot, and I'm passionate about web development. I'm currently based in Mumbai.
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300 text-lg sm:text-xl mt-4">
+                        I studied at St. John College of Engineering, and I'm proficient in English, Hindi, and Marathi.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">My Skills</h3>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 text-lg sm:text-xl space-y-2">
+                        <li>Front-end Development</li>
+                        <li>Java</li>
+                        <li>Databases</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" role="region" aria-labelledby="achievements-heading" class="mb-16">
+            <h2 id="achievements-heading" class="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-white mb-6 text-center">Achievements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-2">Achievement 1</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-lg sm:text-xl">Description of achievement 1.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-2">Achievement 2</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-lg sm:text-xl">Description of achievement 2.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-2">Achievement 3</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-lg sm:text-xl">Description of achievement 3.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="goals" role="region" aria-labelledby="goals-heading" class="mb-16">
+            <h2 id="goals-heading" class="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-white mb-6 text-center">Future Goals</h2>
+            <div class="space-y-4">
+                <p class="text-gray-700 dark:text-gray-300 text-lg sm:text-xl">
+                    My primary goal is to become a full-stack developer. I aim to contribute to the tech community by building accessible and scalable applications.
+                </p>
+                <p class="text-gray-700 dark:text-gray-300 text-lg sm:text-xl">
+                    In the future, I aspire to work with cutting-edge technologies and contribute to open-source projects.
+                </p>
+            </div>
+        </section>
+
+        <section id="personal" role="region" aria-labelledby="personal-heading" class="mb-16">
+            <h2 id="personal-heading" class="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-white mb-6 text-center">Personal Side</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Hobbies</h3>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 text-lg sm:text-xl space-y-2">
+                        <li>Learning new skills</li>
+                        <li>Adventurous activities</li>
+                        <li>Exploring new technologies</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Role Models</h3>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 text-lg sm:text-xl space-y-2">
+                        <li>Dr. APJ Abdul Kalam</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8">
+                <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Favorites</h3>
+                <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 text-lg sm:text-xl space-y-2">
+                    <li>Book: Wings of Fire: An Autobiography</li>
+                    <li>Website: StackOverflow</li>
+                    <li>Startup: Amazon</li>
+                </ul>
+            </div>
+            <div class="mt-8">
+                <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Volunteering</h3>
+                <p class="text-gray-700 dark:text-gray-300 text-lg sm:text-xl">
+                    I have good experience in NSS activities.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 py-4 text-center">
+        <p>&copy; 2025 My Digital Identity. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const closeMenuBtn = document.getElementById("close-menu-btn");
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('section');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle("hidden");
+        }
+
+        hamburgerBtn.addEventListener("click", toggleMobileMenu);
+        closeMenuBtn.addEventListener("click", toggleMobileMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener("click", toggleMobileMenu);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        function updateActiveNavLink() {
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNavLink);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
