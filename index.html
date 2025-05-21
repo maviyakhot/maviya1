@@ -4,17 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Digital Identity</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         /* Active class styling */
         .active {
             font-weight: bold;
             text-decoration: underline;
+        }
+        
+        .map-container {
+            overflow: hidden;
+            padding-bottom: 56.25%;
+            position: relative;
+            height: 0;
+            border-radius: 0.5rem;
+        }
+        
+        .map-container iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
         }
     </style>
 </head>
@@ -29,6 +45,7 @@
                     <li><a href="#achievements" class="hover:text-indigo-200 dark:hover:text-indigo-300 transition duration-300">Achievements</a></li>
                     <li><a href="#goals" class="hover:text-indigo-200 dark:hover:text-indigo-300 transition duration-300">Goals</a></li>
                     <li><a href="#personal" class="hover:text-indigo-200 dark:hover:text-indigo-300 transition duration-300">Personal</a></li>
+                    <li><a href="#contact" class="hover:text-indigo-200 dark:hover:text-indigo-300 transition duration-300">Contact</a></li>
                 </ul>
             </nav>
             <button id="hamburger-btn" class="md:hidden text-white focus:outline-none" aria-label="Toggle Navigation">
@@ -55,6 +72,7 @@
                     <li><a href="#achievements" class="block text-lg text-white hover:text-indigo-300 dark:hover:text-indigo-300 transition duration-300">Achievements</a></li>
                     <li><a href="#goals" class="block text-lg text-white hover:text-indigo-300 dark:hover:text-indigo-300 transition duration-300">Goals</a></li>
                     <li><a href="#personal" class="block text-lg text-white hover:text-indigo-300 dark:hover:text-indigo-300 transition duration-300">Personal</a></li>
+                    <li><a href="#contact" class="block text-lg text-white hover:text-indigo-300 dark:hover:text-indigo-300 transition duration-300">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -80,7 +98,7 @@
                         Hello! I'm Maviya Khot, and I'm passionate about web development. I'm currently based in Mumbai.
                     </p>
                     <p class="text-gray-700 dark:text-gray-300 text-lg sm:text-xl mt-4">
-                        I studied at St. John College of Engineering, and I'm proficient in English, Hindi, and Marathi.
+                        I studied at <a href="https://www.stjohnengg.edu.in/" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline">St. John College of Engineering</a>, and I'm proficient in English, Hindi, and Marathi.
                     </p>
                 </div>
                 <div>
@@ -119,7 +137,7 @@
                     My primary goal is to become a full-stack developer. I aim to contribute to the tech community by building accessible and scalable applications.
                 </p>
                 <p class="text-gray-700 dark:text-gray-300 text-lg sm:text-xl">
-                    In the future, I aspire to work with cutting-edge technologies and contribute to open-source projects.
+                    In the future, I aspire to work with cutting-edge technologies and contribute to <a href="https://github.com" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline">open-source projects</a>.
                 </p>
             </div>
         </section>
@@ -145,92 +163,69 @@
             <div class="mt-8">
                 <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Favorites</h3>
                 <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 text-lg sm:text-xl space-y-2">
-                    <li>Book: Wings of Fire: An Autobiography</li>
-                    <li>Website: StackOverflow</li>
-                    <li>Startup: Amazon</li>
+                    <li>Book: <a href="https://en.wikipedia.org/wiki/Wings_of_Fire_(autobiography)" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline">Wings of Fire: An Autobiography</a></li>
+                    <li>Website: <a href="https://stackoverflow.com" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline">StackOverflow</a></li>
+                    <li>Startup: <a href="https://www.amazon.com" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline">Amazon</a></li>
                 </ul>
             </div>
             <div class="mt-8">
                 <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Volunteering</h3>
                 <p class="text-gray-700 dark:text-gray-300 text-lg sm:text-xl">
-                    I have good experience in NSS activities.
+                    I have good experience in <a href="https://nss.gov.in" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline">NSS</a> activities.
                 </p>
+            </div>
+        </section>
+
+        <!-- New Contact Me Section -->
+        <section id="contact" role="region" aria-labelledby="contact-heading" class="mb-16">
+            <h2 id="contact-heading" class="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-white mb-6 text-center">Contact Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Get In Touch</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-xl font-medium text-gray-800 dark:text-white mb-2">Email</h4>
+                            <a href="mailto:maviyakhot@example.com" class="text-indigo-600 dark:text-indigo-400 hover:underline text-lg">maviyakhot22@gmail.com</a>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-medium text-gray-800 dark:text-white mb-2">Phone</h4>
+                            <a href="tel:+919876543210" class="text-indigo-600 dark:text-indigo-400 hover:underline text-lg">+91 9356551494</a>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-medium text-gray-800 dark:text-white mb-2">Social Media</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://linkedin.com" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline text-lg">LinkedIn</a>
+                                <a href="https://github.com" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline text-lg">GitHub</a>
+                                <a href="https://twitter.com" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline text-lg">Twitter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Location</h3>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.715742753426!2d72.8392153153846!3d19.03398725800054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cee8c5f4c5a5%3A0x8a7e5e8a7e5e8a7e!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                                width="600" 
+                                height="450" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy"
+                                title="Mumbai Location Map"></iframe>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 py-4 text-center">
         <p>&copy; 2025 My Digital Identity. All rights reserved.</p>
+        <p class="mt-2">Connect with me: 
+            <a href="mailto:maviyakhot22@gmail.com" class="text-indigo-600 dark:text-indigo-400 hover:underline">Email</a> | 
+            <a href="https://linkedin.com" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline">LinkedIn</a> | 
+            <a href="https://github.com" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline">GitHub</a>
+        </p>
     </footer>
 
     <script>
         const hamburgerBtn = document.getElementById("hamburger-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-        const closeMenuBtn = document.getElementById("close-menu-btn");
-        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
-        const navLinks = document.querySelectorAll('nav a');
-        const sections = document.querySelectorAll('section');
-
-        function toggleMobileMenu() {
-            mobileMenu.classList.toggle("hidden");
-        }
-
-        hamburgerBtn.addEventListener("click", toggleMobileMenu);
-        closeMenuBtn.addEventListener("click", toggleMobileMenu);
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener("click", toggleMobileMenu);
-        });
-
-        document.addEventListener('click', (event) => {
-            if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target)) {
-                mobileMenu.classList.add('hidden');
-            }
-        });
-
-        function updateActiveNavLink() {
-            let currentSectionId = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
-                    currentSectionId = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === currentSectionId) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveNavLink);
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Harshal Rana - Portfolio</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg,
+        const mobileMenu = document.getElementById
