@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeeTime Threads - Shop</title>
+    <style>
+        :root {
+            --primary: #050a20;  /* Vibrant blue */
+            --secondary: #2c74b8;  /* Deep blue */
+            --accent: #4cc9f0;  /* Light teal */
+            --light: #f8f9fa;  /* Off-white */
+            --dark: #212529;  /* Dark gray */
+            --success: #4bb543;  /* Green */
+            --warning: #f8961e;  /* Orange */
+            --text: #2b2d42;  /* Dark blue-gray for text */
+            --background: #ffffff;  /* White background */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .hamburger-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .primary-btn {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .primary-btn:hover {
+            background-color: var(--light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .add-to-cart-btn {
+            background-color: var(--primary);
+            color: white;
+            width: 100%;
+        }
+        
+        .add-to-cart-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 3rem 0;
+        }
+        
+        .products-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            color: var(--text);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-card h3 {
+            padding: 1rem 1rem 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .price {
+            padding: 0 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        .product-card button {
+            margin: 1rem;
+        }
+        
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-sidebar.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-header h2 {
+            color: var(--text);
+        }
+        
+        .close-cart-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cart-summary {
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .cart-summary p {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+        }
+        
+        .checkout-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: rgb(224, 223, 229);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-media {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-media a {
+            margin: 0 0.5rem;
+        }
+        
+        /* Scroll to top button */
+        .scroll-to-top-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: rgb(212, 202, 225);
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 2px 10px rgba(159, 8, 8, 0.719);
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-to-top-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger-menu {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+           
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">MAVIYA'S Collection</a>
+            <nav class="main-nav">
+                <button class="hamburger-menu" aria-label="Toggle navigation">
+                    &#9776;
+                </button>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#cart-sidebar">Cart (<span id="cart-count">0</span>)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Trendy Tees for Everyone!</h1>
+                <p>Discover your perfect style today.</p>
+                <a href="#products" class="btn primary-btn">Shop Now</a>
+            </div>
+        </section>
+
+        <section id="products" class="products-section container">
+            <h2>Our Latest Collection</h2>
+            <div class="product-grid">
+                <div class="product-card" data-product-id="1">
+                    <img src="https://img.freepik.com/premium-photo/clean-classic-white-tshirt-mockup-your-timeless-designs_1043846-1718.jpg" alt="Classic White T-shirt">
+                    <h3>Classic White Tee</h3>
+                    <p class="price">$19.99</p>
+                    <button class="btn add-to-cart-btn" data-product-name="Classic White Tee" data-product-price="19.99" data-product-image="https://via.placeholder.com/300x300/f0f0f0?text=Classic+White+Tee">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-product-id="2">
+                    <img src="https://simpleteeshops.com/wp-content/uploads/2020/02/Graphic-Printed-T-Shirt-for-Men-USA-Flag-T-Shirt.jpg" alt="Graphic Design T-shirt">
+                    <h3>Graphic Design Tee</h3>
+                    <p class="price">$24.99</p>
+                    <button class="btn add-to-cart-btn" data-product-name="Graphic Design Tee" data-product-price="24.99" data-product-image="https://via.placeholder.com/300x300/e0e0e0?text=Graphic+Design+Tee">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-product-id="3">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6908f075853955.5c58ba72acb59.png" alt="Vintage Band T-shirt">
+                    <h3>Vintage Band Tee</h3>
+                    <p class="price">$29.99</p>
+                    <button class="btn add-to-cart-btn" data-product-name="Vintage Band Tee" data-product-price="29.99" data-product-image="https://via.placeholder.com/300x300/d0d0d0?text=Vintage+Band+Tee">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-product-id="4">
+                    <img src="https://c4.wallpaperflare.com/wallpaper/441/640/890/muscles-gym-t-shirt-arms-wallpaper-preview.jpg" alt="Minimalist Black T-shirt">
+                    <h3>Minimalist Black Tee</h3>
+                    <p class="price">$22.99</p>
+                    <button class="btn add-to-cart-btn" data-product-name="Minimalist Black Tee" data-product-price="22.99" data-product-image="https://via.placeholder.com/300x300/c0c0c0?text=Minimalist+Black+Tee">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-product-id="5">
+                    <img src="https://i.pinimg.com/originals/99/62/d5/9962d5d508134a25b1971d1edbcdf225.png" alt="Summer Vibes T-shirt">
+                    <h3>Summer Vibes Tee</h3>
+                    <p class="price">$21.99</p>
+                    <button class="btn add-to-cart-btn" data-product-name="Summer Vibes Tee" data-product-price="21.99" data-product-image="https://via.placeholder.com/300x300/b0b0b0?text=Summer+Vibes+Tee">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-product-id="6">
+                    <img src="https://i.pinimg.com/originals/a7/d2/8e/a7d28eadfabb60b5b409e37c3dbfe882.jpg" alt="Workout Performance T-shirt">
+                    <h3>Workout Performance Tee</h3>
+                    <p class="price">$27.99</p>
+                    <button class="btn add-to-cart-btn" data-product-name="Workout Performance Tee" data-product-price="27.99" data-product-image="https://via.placeholder.com/300x300/a0a0a0?text=Workout+Performance+Tee">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="cart-sidebar" class="cart-sidebar">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <button class="close-cart-btn">&times;</button>
+            </div>
+            <div class="cart-items" id="cart-items-container">
+                <p id="empty-cart-message">Your cart is empty.</p>
+            </div>
+            <div class="cart-summary">
+                <p>Total: $<span id="cart-total">0.00</span></p>
+                <button class="btn primary-btn checkout-btn" disabled>Checkout</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="/about.html">About Us</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/terms.html">Terms & Conditions</a>
+            </div>
+            <div class="social-media">
+                <a href="#"><img src="https://via.placeholder.com/24/ffffff/4361ee?text=F" alt="Facebook"></a>
+                <a href="#"><img src="https://via.placeholder.com/24/ffffff/4361ee?text=T" alt="Twitter"></a>
+                <a href="#"><img src="https://via.placeholder.com/24/ffffff/4361ee?text=I" alt="Instagram"></a>
+            </div>
+            <p>&copy; 2023 TeeTime Threads. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button id="scroll-to-top" class="scroll-to-top-btn" title="Go to top">&#9650;</button>
+
+    <script>
+        // Simple cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const cart = [];
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const cartTotalElement = document.getElementById('cart-total');
+            const cartCountElement = document.getElementById('cart-count');
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            const cartSidebar = document.getElementById('cart-sidebar');
+            const closeCartBtn = document.querySelector('.close-cart-btn');
+            const cartLinks = document.querySelectorAll('a[href="#cart-sidebar"]');
+            
+            // Add to cart buttons
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = {
+                        id: this.parentElement.getAttribute('data-product-id'),
+                        name: this.getAttribute('data-product-name'),
+                        price: parseFloat(this.getAttribute('data-product-price')),
+                        image: this.getAttribute('data-product-image')
+                    };
+                    
+                    cart.push(product);
+                    updateCart();
+                    showCart();
+                });
+            });
+            
+            // Update cart display
+            function updateCart() {
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                    cartItemsContainer.innerHTML = '<p id="empty-cart-message">Your cart is empty.</p>';
+                    checkoutBtn.disabled = true;
+                } else {
+                    emptyCartMessage.style.display = 'none';
+                    let itemsHTML = '';
+                    let total = 0;
+                    
+                    cart.forEach((item, index) => {
+                        itemsHTML += `
+                            <div class="cart-item" data-index="${index}">
+                                <img src="${item.image}" alt="${item.name}" width="50">
+                                <div>
+                                    <h4>${item.name}</h4>
+                                    <p>$${item.price.toFixed(2)}</p>
+                                </div>
+                                <button class="remove-item-btn" data-index="${index}">&times;</button>
+                            </div>
+                        `;
+                        total += item.price;
+                    });
+                    
+                    cartItemsContainer.innerHTML = itemsHTML;
+                    cartTotalElement.textContent = total.toFixed(2);
+                    cartCountElement.textContent = cart.length;
+                    checkoutBtn.disabled = false;
+                    
+                    // Add event listeners to remove buttons
+                    document.querySelectorAll('.remove-item-btn').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const index = parseInt(this.getAttribute('data-index'));
+                            cart.splice(index, 1);
+                            updateCart();
+                        });
+                    });
+                }
+            }
+            
+            // Show/hide cart sidebar
+            function showCart() {
+                cartSidebar.classList.add('active');
+            }
+            
+            function hideCart() {
+                cartSidebar.classList.remove('active');
+            }
+            
+            // Cart link click handlers
+            cartLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showCart();
+                });
+            });
+            
+            closeCartBtn.addEventListener('click', hideCart);
+            
+            // Scroll to top button
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            });
+            
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Mobile menu toggle would go here
+        });
+    </script>
+</body>
+</html>
